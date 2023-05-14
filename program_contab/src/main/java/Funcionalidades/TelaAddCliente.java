@@ -6,8 +6,8 @@ package Funcionalidades;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -22,6 +22,7 @@ public class TelaAddCliente extends javax.swing.JFrame {
         initComponents();
     }
 
+    Cliente cliente = new Cliente();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -282,29 +283,53 @@ public class TelaAddCliente extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
-        //SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        
-        int cpfCnpj = Integer.parseInt(CpfCnpjText.getText());
-        int inscMunicipal = Integer.parseInt(InscricaoMunicipalText.getText());
-        String nome = NameText.getText();
-        String endereco = EnderecoText.getText();
-        int numero = Integer.parseInt(NumeroText.getText());
-        String complemento = ComplementoText.getText();
-        String bairro = BairroText.getText();
-        String uf = UfText.getText();
-        int cep = Integer.parseInt(CepText.getText());
-        int tel = Integer.parseInt(TelefoneText.getText());
-        String email = EmailText.getText();
-        String razaoRed = RazaoRedText.getText();
-        String data = DataCadastroText.getText();
-        String indicacao = IndicacaoText.getText();
-        int comissao = Integer.parseInt(ComissaoText.getText());
-        
-        
-        Cliente c1 = new Cliente(cpfCnpj, inscMunicipal, nome, endereco, numero, complemento, bairro, uf, cep, tel, email, razaoRed, data, indicacao, comissao);
-        
-        System.out.println(c1);
-        
+       if (validaCamposObrigatorios()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
+        } else {
+            try {
+                cliente.setCpfCnpj(Integer.parseInt(CpfCnpjText.getText()));
+                cliente.setInscricaoMunicipal(Integer.parseInt(InscricaoMunicipalText.getText()));
+                cliente.setRazaoSocial(NameText.getText());
+                cliente.setEndereco(EnderecoText.getText());
+                cliente.setNumeroEndereco(Integer.parseInt(NumeroText.getText()));
+                cliente.setComplemento(ComplementoText.getText());
+                cliente.setBairro(BairroText.getText());
+                cliente.setUfEndereco(UfText.getText());
+                cliente.setCep(Integer.parseInt(CepText.getText()));
+                cliente.setTelefone(Integer.parseInt(TelefoneText.getText()));
+                cliente.setEmail(EmailText.getText());
+                cliente.setRazaoReduzida(RazaoRedText.getText());
+                cliente.setDataCadastro(DataCadastroText.getText());
+                cliente.setIndicacao(IndicacaoText.getText());
+                cliente.setComissao(Float.parseFloat(ComissaoText.getText()));
+          } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
+            }
+        }
+        salvarDados();
+        // Cliente c1 = new Cliente(cpfCnpj, inscMunicipal, nome, endereco, numero, complemento, bairro, uf, cep, tel, email, razaoRed, data, indicacao, comissao);
+    }
+   
+    private void salvarDados() {
+
+    }
+
+    private boolean validaCamposObrigatorios() {
+        return (CpfCnpjText.getText().equals("")
+                || InscricaoMunicipalText.getText().equals("")
+                || NameText.getText().equals("")
+                || EnderecoText.getText().equals("")
+                || NumeroText.getText().equals("")
+                || ComplementoText.getText().equals("")
+                || BairroText.getText().equals("")
+                || UfText.getText().equals("")
+                || CepText.getText().equals("")
+                || TelefoneText.getText().equals("")
+                || EmailText.getText().equals("")
+                || RazaoRedText.getText().equals("")
+                || DataCadastroText.getText().equals("")
+                || IndicacaoText.getText().equals("")
+                || ComissaoText.getText().equals(""));       
     }//GEN-LAST:event_SaveButtonActionPerformed
 
     /**

@@ -28,12 +28,15 @@ public class Cliente {
     private float comissao;
 
 
+    public Cliente(){
+        
+    }
+    
     public Cliente(int cpfCnpj, int inscricaoMunicipal, String razaoSocial,
             String endereco, int numeroEndereco, String complemento,
             String bairro, String ufEndereco, int cep, int telefone, String email,
             String razaoReduzida, String dataCadastro, String indicacao, float comissao)
-               
-            
+                
     {
         this.cpfCnpj = cpfCnpj;
         this.inscricaoMunicipal = inscricaoMunicipal;
