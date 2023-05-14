@@ -6,6 +6,7 @@ package Funcionalidades;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,7 @@ public class TelaAddNFEs extends javax.swing.JFrame {
         initComponents();
     }
 
+    Nfes nfe = new Nfes();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -371,33 +373,69 @@ public class TelaAddNFEs extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
-        int numero = NumeroField.getText();
-        String codVerif = CodVerificaoField.getText();
-        int dataEmissao = DataEmissaoField.getText();
-        String competencia = CompetenciaField.getText();
-        float baseCalc = BasedeCalculoField.getText();
-        float issRetido = IssRetidoField.getText();
-        float valorLiq = ValorLiquidoLabelField.getText();
-        float valorServ = ValordosServicosField.getText();
-        String codTrib = CodTributacaoMunField.getText();
-        String discServ = DiscServicosText.getText();
-        String cpfCnpj = CpfCnpjField.getText();
-        String razRed = RazaoRedField.getText();
-        String bairro = BairroField.getText();
-        String uf = UFField.getText();
-        int dataVenc = VencimentoField.getText();
-        int dataPag = PagamentoField.getText();
-        float jurosPag = JurosField.getText();
-        float descPag = DescontoField.getText();
-        float impRet = ImpostoRetField.getText();
-        float valorPago = ValorPagoField.getText();
-        int importadaEm = ImportadaEmField.getText();
-        double jurosMultaAbon = JurosMultaAbonadaField.getText();
-        float anoMes = MesAnoField.getText();
-        
-        
+        if (validaCamposObrigatorios()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
+        } else {
+            try {
+                nfe.setNumero(Integer.parseInt(NumeroField.getText()));
+                nfe.setCodVerificacao(CodVerificacaoField.getText());
+                nfe.setDataEmissao(Integer.parseInt(DataEmissaoField.getText()));
+                nfe.setCompetencia(CompetenciaField.getText());
+                nfe.setBaseCalculo(Float.parseFloat(BasedeCalculoField.getText()));
+                nfe.setIssRetido(Float.parseFloat(IssRetidoField.getText()));
+                nfe.setValorLiquido(Float.parseFloat(ValorLiquidoLabelField.getText()));
+                nfe.setValorServico(Float.parseFloat(ValordosServicosField.getText()));
+                nfe.setCodigoTributacao(CodTributacaoMunField.getText());
+                nfe.setServico(DiscServicosText.getText());
+                nfe.setCpfCnpjCliente(CpfCnpjField.getText());
+                nfe.setRazaoReduzidaCliente(RazaoRedField.getText());
+                nfe.setBairroCliente(BairroField.getText());
+                nfe.setUfCliente(UFField.getText());
+                nfe.setDataVencimento(Integer.parseInt(VencimentoField.getText()));
+                nfe.setDataPagamento(Integer.parseInt(PagamentoField.getText()));
+                nfe.setJurosPagamento(Float.parseFloat(JurosField.getText()));
+                nfe.setDescontoPagamento(Float.parseFloat(DescontoField.getText()));
+                nfe.setImpostoRetido(Float.parseFloat(ImpostoRetField.getText()));
+                nfe.setValorPago(Float.parseFloat(ValorPagoField.getText()));
+                nfe.setImportadaEm(Integer.parseInt(ImportadaEmField.getText()));
+                nfe.setJurosMultaAbonada(Float.parseFloat(JurosMultaAbonadaField.getText()));
+                nfe.setDataEmissao(Integer.parseInt(MesAnoField.getText()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
+            }
+        }
+        salvarDados();
     }//GEN-LAST:event_SaveButtonActionPerformed
 
+private void salvarDados() {
+                
+    }
+    
+    private boolean validaCamposObrigatorios(){
+        return (NumeroField.getText().equals("")
+                || CodVerificacaoField.getText().equals("")
+                || DataEmissaoField.getText().equals("")
+                || CompetenciaField.getText().equals("")
+                || BasedeCalculoField.getText().equals("")
+                || IssRetidoField.getText().equals("")
+                || ValorLiquidoLabelField.getText().equals("")
+                || ValordosServicosField.getText().equals("")
+                || CodTributacaoMunField.getText().equals("")
+                || DiscServicosText.getText().equals("")
+                || CpfCnpjField.getText().equals("")
+                || RazaoRedField.getText().equals("")
+                || BairroField.getText().equals("")
+                || UFField.getText().equals("")
+                || VencimentoField.getText().equals("")
+                || PagamentoField.getText().equals("")
+                || JurosField.getText().equals("")
+                || DescontoField.getText().equals("")
+                || ImpostoRetField.getText().equals("")
+                || ValorPagoField.getText().equals("")
+                || ImportadaEmField.getText().equals("")
+                || JurosMultaAbonadaField.getText().equals("")
+                || MesAnoField.getText().equals(""));
+    }
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         CancelButton.addActionListener(new ActionListener() {
             @Override
@@ -421,16 +459,28 @@ public class TelaAddNFEs extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAddNFEs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAddNFEs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAddNFEs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAddNFEs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddNFEs.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaAddNFEs.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaAddNFEs.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaAddNFEs.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

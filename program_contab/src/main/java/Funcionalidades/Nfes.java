@@ -50,7 +50,9 @@ private int diasAtraso;
 private int nfeAtraso;
 private double acumuloAtraso;
 
-
+public Nfes(){
+    
+}
 
 public Nfes(int numero, String codVerificacao, int dataEmissao, String competencia, float baseCalculo,
             float issRetido, float valorLiquido, float valorServico, String codigoTributacao, String servico,
