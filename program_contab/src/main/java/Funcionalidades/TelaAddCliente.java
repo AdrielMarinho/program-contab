@@ -302,11 +302,13 @@ public class TelaAddCliente extends javax.swing.JFrame {
                 cliente.setDataCadastro(DataCadastroText.getText());
                 cliente.setIndicacao(IndicacaoText.getText());
                 cliente.setComissao(Float.parseFloat(ComissaoText.getText()));
+                JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
           } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
             }
         }
         salvarDados();
+        System.out.println(cliente);
         // Cliente c1 = new Cliente(cpfCnpj, inscMunicipal, nome, endereco, numero, complemento, bairro, uf, cep, tel, email, razaoRed, data, indicacao, comissao);
     }
    
