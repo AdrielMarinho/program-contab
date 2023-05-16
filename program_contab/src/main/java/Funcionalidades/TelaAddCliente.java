@@ -8,7 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
+import Funcionalidades.Connector;
+import Funcionalidades.MetodosSave;
 /**
  *
  * @author Adriel
@@ -18,11 +19,14 @@ public class TelaAddCliente extends javax.swing.JFrame {
     /**
      * Creates new form TelaAddCliente
      */
+	
+	Cliente cliente = new Cliente();
+    MetodosSave metodoSave = new MetodosSave();
+	
     public TelaAddCliente() {
         initComponents();
     }
 
-    Cliente cliente = new Cliente();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -287,21 +291,21 @@ public class TelaAddCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
         } else {
             try {
-                cliente.setCpfCnpj(Integer.parseInt(CpfCnpjText.getText()));
-                cliente.setInscricaoMunicipal(Integer.parseInt(InscricaoMunicipalText.getText()));
+                cliente.setCpfCnpj((CpfCnpjText.getText().trim()));
+                cliente.setInscricaoMunicipal((InscricaoMunicipalText.getText()));
                 cliente.setRazaoSocial(NameText.getText());
                 cliente.setEndereco(EnderecoText.getText());
-                cliente.setNumeroEndereco(Integer.parseInt(NumeroText.getText()));
+                cliente.setNumeroEndereco((NumeroText.getText()));
                 cliente.setComplemento(ComplementoText.getText());
                 cliente.setBairro(BairroText.getText());
                 cliente.setUfEndereco(UfText.getText());
-                cliente.setCep(Integer.parseInt(CepText.getText()));
-                cliente.setTelefone(Integer.parseInt(TelefoneText.getText()));
+                cliente.setCep((CepText.getText()));
+                cliente.setTelefone((TelefoneText.getText()));
                 cliente.setEmail(EmailText.getText());
                 cliente.setRazaoReduzida(RazaoRedText.getText());
                 cliente.setDataCadastro(DataCadastroText.getText());
                 cliente.setIndicacao(IndicacaoText.getText());
-                cliente.setComissao(Float.parseFloat(ComissaoText.getText()));
+                cliente.setComissao((ComissaoText.getText()));
                 JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
           } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
@@ -313,7 +317,7 @@ public class TelaAddCliente extends javax.swing.JFrame {
     }
    
     private void salvarDados() {
-
+    	
     }
 
     private boolean validaCamposObrigatorios() {

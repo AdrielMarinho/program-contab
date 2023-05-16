@@ -11,31 +11,31 @@ package Funcionalidades;
  */
 public class Cliente {
 
-    private int cpfCnpj;
-    private int inscricaoMunicipal;
+    private String cpfCnpj;
+    private String inscricaoMunicipal;
     private String razaoSocial;
     private String endereco;
-    private int numeroEndereco;
+    private String numeroEndereco;
     private String complemento;
     private String bairro;
     private String ufEndereco;
-    private int cep;
-    private int telefone;
+    private String cep;
+    private String telefone;
     private String email;
     private String razaoReduzida;
     private String dataCadastro;
     private String indicacao;
-    private float comissao;
+    private String comissao;
 
 
     public Cliente(){
         
     }
     
-    public Cliente(int cpfCnpj, int inscricaoMunicipal, String razaoSocial,
-            String endereco, int numeroEndereco, String complemento,
-            String bairro, String ufEndereco, int cep, int telefone, String email,
-            String razaoReduzida, String dataCadastro, String indicacao, float comissao)
+    public Cliente(String cpfCnpj, String inscricaoMunicipal, String razaoSocial,
+            String endereco, String numeroEndereco, String complemento,
+            String bairro, String ufEndereco, String cep, String telefone, String email,
+            String razaoReduzida, String dataCadastro, String indicacao, String comissao)
                 
     {
         this.cpfCnpj = cpfCnpj;
@@ -55,19 +55,19 @@ public class Cliente {
         this.comissao = comissao;
     }
 
-    public int getCpfCnpj() {
+    public String getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpfCnpj(int cpfCnpj) {
+    public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public int getInscricaoMunicipal() {
+    public String getInscricaoMunicipal() {
         return inscricaoMunicipal;
     }
 
-    public void setInscricaoMunicipal(int inscricaoMunicipal) {
+    public void setInscricaoMunicipal(String inscricaoMunicipal) {
         this.inscricaoMunicipal = inscricaoMunicipal;
     }
 
@@ -87,11 +87,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getNumeroEndereco() {
+    public String getNumeroEndereco() {
         return numeroEndereco;
     }
 
-    public void setNumeroEndereco(int numeroEndereco) {
+    public void setNumeroEndereco(String numeroEndereco) {
         this.numeroEndereco = numeroEndereco;
     }
 
@@ -119,11 +119,11 @@ public class Cliente {
         this.ufEndereco = ufEndereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
@@ -159,19 +159,19 @@ public class Cliente {
         this.indicacao = indicacao;
     }
 
-    public float getComissao() {
+    public String getComissao() {
         return comissao;
     }
 
-    public void setComissao(float comissao) {
+    public void setComissao(String comissao) {
         this.comissao = comissao;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
