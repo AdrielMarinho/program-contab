@@ -6,6 +6,8 @@ package Funcionalidades;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import Funcionalidades.Connector;
@@ -280,6 +282,12 @@ public class TelaAddCliente extends javax.swing.JFrame {
         CancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	/*
+            	 * TENTATIVA DE FAZER A TELA INICIAL ABRIR QUANDO FOR CLICADO EM CANCELAR NO PROGRAMA
+            	 TelaInicial telaInicial = new TelaInicial();
+            	 telaInicial.setVisible(true);
+            	 */
+            	
                 dispose();
             }
         });
@@ -287,7 +295,14 @@ public class TelaAddCliente extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
-       if (validaCamposObrigatorios()) {
+       
+        salvarDados();
+        //System.out.println(cliente);
+        // Cliente c1 = new Cliente(cpfCnpj, inscMunicipal, nome, endereco, numero, complemento, bairro, uf, cep, tel, email, razaoRed, data, indicacao, comissao);
+    }
+   
+    private void salvarDados() {
+    	if (validaCamposObrigatorios()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
         } else {
             try {
@@ -306,18 +321,14 @@ public class TelaAddCliente extends javax.swing.JFrame {
                 cliente.setDataCadastro(DataCadastroText.getText());
                 cliente.setIndicacao(IndicacaoText.getText());
                 cliente.setComissao((ComissaoText.getText()));
+                
+                metodoSave.criarRegistroClienteBD(cliente);
+                
                 JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
-          } catch (Exception e) {
+          } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
             }
         }
-        salvarDados();
-        System.out.println(cliente);
-        // Cliente c1 = new Cliente(cpfCnpj, inscMunicipal, nome, endereco, numero, complemento, bairro, uf, cep, tel, email, razaoRed, data, indicacao, comissao);
-    }
-   
-    private void salvarDados() {
-    	
     }
 
     private boolean validaCamposObrigatorios() {

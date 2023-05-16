@@ -376,6 +376,12 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void AddButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton2ActionPerformed
         TelaAddCliente telaAdd = new TelaAddCliente();
+        /*
+         * TENTATIVA DE FAZER A TELA INICIAL SUMIR ASSIM QUE FOR CLICADO EM ADD DADOS
+        	TelaInicial telaInicial = new TelaInicial();
+        	telaInicial.setVisible(false); 
+         */
+        
         telaAdd.setVisible(true);
         telaAdd.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_AddButton2ActionPerformed
