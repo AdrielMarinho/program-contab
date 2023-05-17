@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Funcionalidades;
+
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Adriel
@@ -54,6 +59,7 @@ public class TelaInicial extends javax.swing.JFrame {
         CodVerificacaoSearchButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
+        listar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -237,10 +243,22 @@ public class TelaInicial extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CPF", "NOME", "IDADE", "EMAIL"
+                "CPF/CNPJ", "RAZÃO SOCIAL", "INSCRIÇÃO MUNICIPAL", "EMAIL"
             }
         ));
         jScrollPane1.setViewportView(tabela);
+
+        listar.setText("LISTAR");
+        listar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listarMouseClicked(evt);
+            }
+        });
+        listar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -273,7 +291,9 @@ public class TelaInicial extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CodVerificacaoSearchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(NumberSearchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(listar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EditButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,14 +319,15 @@ public class TelaInicial extends javax.swing.JFrame {
                             .addComponent(CPFLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CPFField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(DeleteButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EditButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(NumberSearchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(28, 28, 28)
-                            .addComponent(CodVerificacaoSearchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(CodVerificacaoSearchButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(listar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DeleteButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
@@ -381,7 +402,7 @@ public class TelaInicial extends javax.swing.JFrame {
         	TelaInicial telaInicial = new TelaInicial();
         	telaInicial.setVisible(false); 
          */
-        
+        this.dispose();
         telaAdd.setVisible(true);
         telaAdd.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_AddButton2ActionPerformed
@@ -397,6 +418,25 @@ public class TelaInicial extends javax.swing.JFrame {
         telaAltNfe.setVisible(true);
         telaAltNfe.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_EditButtonActionPerformed
+
+    private void listarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarMouseClicked
+
+    private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
+        // TODO add your handling code here:
+    	MetodosSave metodoListar = new MetodosSave(); 
+    	ArrayList<Cliente> cliente = metodoListar.listarDadosCliente();
+    	
+    	DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
+    	modelo.setNumRows(0);
+    	
+    	for (Cliente c:cliente) {
+    		Object[] dados = {c.getCpfCnpj(), c.getRazaoSocial(), c.getInscricaoMunicipal(), c.getEmail()};
+    		modelo.addRow(dados);
+    	}
+    	
+    }//GEN-LAST:event_listarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -463,6 +503,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton listar;
     private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

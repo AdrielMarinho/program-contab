@@ -32,6 +32,13 @@ public class Cliente {
         
     }
     
+    public Cliente(String cpfCnpj, String inscricaoMunicipal, String razaoSocial, String email) {
+    	this.cpfCnpj = cpfCnpj;
+    	this.inscricaoMunicipal = inscricaoMunicipal;
+    	this.razaoSocial = razaoSocial;
+    	this.email = email;
+    }
+    
     public Cliente(String cpfCnpj, String inscricaoMunicipal, String razaoSocial,
             String endereco, String numeroEndereco, String complemento,
             String bairro, String ufEndereco, String cep, String telefone, String email,
@@ -55,7 +62,8 @@ public class Cliente {
         this.comissao = comissao;
     }
 
-    public String getCpfCnpj() {
+
+	public String getCpfCnpj() {
         return cpfCnpj;
     }
 

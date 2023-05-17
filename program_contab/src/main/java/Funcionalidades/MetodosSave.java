@@ -3,9 +3,14 @@ package Funcionalidades;
 import Funcionalidades.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.protocol.Resultset;
 
 public class MetodosSave {
 
@@ -38,5 +43,35 @@ public class MetodosSave {
 			Connector.desconectar(con, stmt);
 		}
 	}
+	
+	public ArrayList<Cliente> listarDadosCliente(){
+		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
+		Connection con = Connector.conectar();
+		PreparedStatement stmt = null;
+		String sql = "SELECT * from cliente";
+		
+		try {
+			stmt = con.prepareStatement(sql);
+			ResultSet resposta = stmt.executeQuery(sql);
+			
+			while(resposta.next()) {
+				
+				String cpfCnpj = resposta.getString("cpf_cnpj");
+				String razaoSocial = resposta.getString("razao_social");
+				String inscMunicipal = resposta.getString("inscricao_municipal");
+				String email = resposta.getString("email");
+				
+				Cliente c = new Cliente(cpfCnpj, razaoSocial, inscMunicipal, email);
+				cliente.add(c);
+			}
+			
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Erro ao listar dados na tabela.");
+		} finally {
+			Connector.desconectar(con, stmt);
+		}
+		return cliente;
+	} 
+	
 }
 

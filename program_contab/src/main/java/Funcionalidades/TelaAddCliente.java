@@ -282,13 +282,9 @@ public class TelaAddCliente extends javax.swing.JFrame {
         CancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	/*
-            	 * TENTATIVA DE FAZER A TELA INICIAL ABRIR QUANDO FOR CLICADO EM CANCELAR NO PROGRAMA
             	 TelaInicial telaInicial = new TelaInicial();
-            	 telaInicial.setVisible(true);
-            	 */
-            	
-                dispose();
+            	 telaInicial.setVisible(true);        	 
+                 dispose();
             }
         });
     }//GEN-LAST:event_CancelButtonActionPerformed
