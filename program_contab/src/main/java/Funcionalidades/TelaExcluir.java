@@ -126,6 +126,7 @@ public class TelaExcluir extends javax.swing.JFrame {
 
     private void ExcluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirButtonActionPerformed
         // TODO add your handling code here:
+    	System.out.println(".....");
     	MetodosSave deletar = new MetodosSave();
     	deletar.deletarNFE(cpfCnpjTextField.getText());
     }//GEN-LAST:event_ExcluirButtonActionPerformed
