@@ -55,7 +55,6 @@ public class TelaExcluir extends javax.swing.JFrame {
             }
         });
 
-        cpfCnpjTextField.setText("jTextField1");
         cpfCnpjTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cpfCnpjTextFieldActionPerformed(evt);
@@ -63,30 +62,33 @@ public class TelaExcluir extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Digite o CPF/CNPJ que deseja excluir");
+        jLabel1.setText("Digite o codigo de verificação que deseja excluir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cpfCnpjTextField)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(107, Short.MAX_VALUE)
+                        .addComponent(ExcluirLabel)
+                        .addGap(279, 279, 279)
+                        .addComponent(CancelarLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(ExcluirLabel))
-                            .addComponent(ExcluirButton))
+                        .addGap(86, 86, 86)
+                        .addComponent(cpfCnpjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(ExcluirButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(CancelarLabel)
-                                .addGap(30, 30, 30))
-                            .addComponent(CancelarButton, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                        .addComponent(CancelarButton)))
+                .addContainerGap(58, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,13 +102,10 @@ public class TelaExcluir extends javax.swing.JFrame {
                     .addComponent(ExcluirLabel)
                     .addComponent(CancelarLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ExcluirButton)
-                        .addContainerGap(50, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CancelarButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CancelarButton)
+                    .addComponent(ExcluirButton))
+                .addGap(0, 50, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,7 +127,7 @@ public class TelaExcluir extends javax.swing.JFrame {
     private void ExcluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirButtonActionPerformed
         // TODO add your handling code here:
     	MetodosSave deletar = new MetodosSave();
-    	deletar.deletarNFE(nfe.getCpfCnpjCliente());
+    	deletar.deletarNFE(cpfCnpjTextField.getText());
     }//GEN-LAST:event_ExcluirButtonActionPerformed
 
     /**

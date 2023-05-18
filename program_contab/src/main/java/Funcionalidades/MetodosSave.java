@@ -73,14 +73,15 @@ public class MetodosSave {
 		}
 	}
 	
-	public void deletarNFE(String nfe) {
+	public void deletarNFE(String codVer) {
 		Connection con = Connector.conectar();
 		PreparedStatement stmt = null;
 		String sql = "DELETE from nfe where cod_ver= ?";
 		
 		try {
 			stmt = con.prepareStatement(sql);
-			ResultSet resposta = stmt.executeQuery(sql);
+			//ResultSet resposta = stmt.executeQuery(sql);
+			stmt.setString(1, codVer);
 			
 		} catch (SQLException e) {
 			JOptionPane.showConfirmDialog(null, "Erro ao excluir os dados");
