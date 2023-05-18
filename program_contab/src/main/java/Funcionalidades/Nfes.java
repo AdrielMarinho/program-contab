@@ -4,22 +4,22 @@ package Funcionalidades;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import java.util.Date;
+//import java.util.Date;
 /**
  *
  * @author Gabi
  */
 public class Nfes {
     
-private int numero;
+private String numero;
 private String codVerificacao;
-private int dataEmissao;
+private String dataEmissao;
 private String competencia;
 
-private float baseCalculo;
-private float issRetido;
-private float valorLiquido;
-private float valorServico;
+private String baseCalculo;
+private String issRetido;
+private String valorLiquido;
+private String valorServico;
 
 private String codigoTributacao;
 private String servico;
@@ -30,36 +30,54 @@ private String razaoReduzidaCliente;
 private String bairroCliente;
 private String ufCliente;
 
-private int dataVencimento;
-private int dataPagamento;
+private String dataVencimento;
+private String dataPagamento;
 
-private float jurosPagamento;
-private float descontoPagamento;
-private float impostoRetido;
-private float valorPago;
+private String jurosPagamento;
+private String descontoPagamento;
+private String impostoRetido;
+private String valorPago;
 
 //Tentei por cancelamento como opcional pois nem sempre irá tê-lo
 private CancelamentoNfes cancelamentoNfe;
 
 
-private int importadaEm;
-private double jurosMultaAbonada;
-private float anoMes;
+private String importadaEm;
+private String jurosMultaAbonada;
+private String anoMes;
 
-private int diasAtraso;
-private int nfeAtraso;
-private double acumuloAtraso;
+private String diasAtraso;
+private String nfeAtraso;
+private String acumuloAtraso;
 
 public Nfes(){
     
 }
 
-public Nfes(int numero, String codVerificacao, int dataEmissao, String competencia, float baseCalculo,
-            float issRetido, float valorLiquido, float valorServico, String codigoTributacao, String servico,
+public Nfes(String codVerificacao, String numero, String dataEmissao, String competencia, String dataVencimento ,String dataPagamento, String baseCalculo, String issRetido,
+			String valorLiquido, String valorServico, String jurosPagamento, String descontoPagamento, String impostoRetido, String valorPago) {
+	this.codVerificacao = codVerificacao;
+	this.numero = numero;
+	this.dataEmissao = dataEmissao;
+	this.competencia = competencia;
+	this.dataVencimento = dataVencimento;
+	this.dataPagamento = dataPagamento;
+	this.baseCalculo = baseCalculo;
+	this.issRetido = issRetido;
+	this.valorLiquido = valorLiquido;
+	this.valorServico = valorServico;
+	this.jurosPagamento = jurosPagamento;
+	this.descontoPagamento = descontoPagamento;
+	this.impostoRetido = impostoRetido;
+	this.valorPago = valorPago;
+}
+
+public Nfes(String numero, String codVerificacao, String dataEmissao, String competencia, String baseCalculo,
+            String issRetido, String valorLiquido, String valorServico, String codigoTributacao, String servico,
             String cpfCnpjCliente, String razaoReduzidaCliente, String bairroCliente, String ufCliente,
-            int dataVencimento, int dataPagamento, float jurosPagamento, float descontoPagamento,
-            float impostoRetido, float valorPago, int importadaEm, double jurosMultaAbonada, float anoMes,
-            int diasAtraso, int nfeAtraso, double acumuloAtraso) 
+            String dataVencimento, String dataPagamento, String jurosPagamento, String descontoPagamento,
+            String impostoRetido, String valorPago, String importadaEm, String jurosMultaAbonada, String anoMes,
+            String diasAtraso, String nfeAtraso, String acumuloAtraso) 
 
 
 
@@ -97,11 +115,11 @@ public Nfes(int numero, String codVerificacao, int dataEmissao, String competenc
 
 }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -113,11 +131,11 @@ public Nfes(int numero, String codVerificacao, int dataEmissao, String competenc
         this.codVerificacao = codVerificacao;
     }
 
-    public int getDataEmissao() {
+    public String getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(int dataEmissao) {
+    public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
@@ -129,35 +147,35 @@ public Nfes(int numero, String codVerificacao, int dataEmissao, String competenc
         this.competencia = competencia;
     }
 
-    public float getBaseCalculo() {
+    public String getBaseCalculo() {
         return baseCalculo;
     }
 
-    public void setBaseCalculo(float baseCalculo) {
+    public void setBaseCalculo(String baseCalculo) {
         this.baseCalculo = baseCalculo;
     }
 
-    public float getIssRetido() {
+    public String getIssRetido() {
         return issRetido;
     }
 
-    public void setIssRetido(float issRetido) {
+    public void setIssRetido(String issRetido) {
         this.issRetido = issRetido;
     }
 
-    public float getValorLiquido() {
+    public String getValorLiquido() {
         return valorLiquido;
     }
 
-    public void setValorLiquido(float valorLiquido) {
+    public void setValorLiquido(String valorLiquido) {
         this.valorLiquido = valorLiquido;
     }
 
-    public float getValorServico() {
+    public String getValorServico() {
         return valorServico;
     }
 
-    public void setValorServico(float valorServico) {
+    public void setValorServico(String valorServico) {
         this.valorServico = valorServico;
     }
 
@@ -209,99 +227,99 @@ public Nfes(int numero, String codVerificacao, int dataEmissao, String competenc
         this.ufCliente = ufCliente;
     }
 
-    public int getDataVencimento() {
+    public String getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(int dataVencimento) {
+    public void setDataVencimento(String dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public int getDataPagamento() {
+    public String getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(int dataPagamento) {
+    public void setDataPagamento(String dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
-    public float getJurosPagamento() {
+    public String getJurosPagamento() {
         return jurosPagamento;
     }
 
-    public void setJurosPagamento(float jurosPagamento) {
+    public void setJurosPagamento(String jurosPagamento) {
         this.jurosPagamento = jurosPagamento;
     }
 
-    public float getDescontoPagamento() {
+    public String getDescontoPagamento() {
         return descontoPagamento;
     }
 
-    public void setDescontoPagamento(float descontoPagamento) {
+    public void setDescontoPagamento(String descontoPagamento) {
         this.descontoPagamento = descontoPagamento;
     }
 
-    public float getImpostoRetido() {
+    public String getImpostoRetido() {
         return impostoRetido;
     }
 
-    public void setImpostoRetido(float impostoRetido) {
+    public void setImpostoRetido(String impostoRetido) {
         this.impostoRetido = impostoRetido;
     }
 
-    public float getValorPago() {
+    public String getValorPago() {
         return valorPago;
     }
 
-    public void setValorPago(float valorPago) {
+    public void setValorPago(String valorPago) {
         this.valorPago = valorPago;
     }
 
-    public int getImportadaEm() {
+    public String getImportadaEm() {
         return importadaEm;
     }
 
-    public void setImportadaEm(int importadaEm) {
+    public void setImportadaEm(String importadaEm) {
         this.importadaEm = importadaEm;
     }
 
-    public double getJurosMultaAbonada() {
+    public String getJurosMultaAbonada() {
         return jurosMultaAbonada;
     }
 
-    public void setJurosMultaAbonada(double jurosMultaAbonada) {
+    public void setJurosMultaAbonada(String jurosMultaAbonada) {
         this.jurosMultaAbonada = jurosMultaAbonada;
     }
 
-    public float getAnoMes() {
+    public String getAnoMes() {
         return anoMes;
     }
 
-    public void setAnoMes(float anoMes) {
+    public void setAnoMes(String anoMes) {
         this.anoMes = anoMes;
     }
 
-    public int getDiasAtraso() {
+    public String getDiasAtraso() {
         return diasAtraso;
     }
 
-    public void setDiasAtraso(int diasAtraso) {
+    public void setDiasAtraso(String diasAtraso) {
         this.diasAtraso = diasAtraso;
     }
 
-    public int getNfeAtraso() {
+    public String getNfeAtraso() {
         return nfeAtraso;
     }
 
-    public void setNfeAtraso(int nfeAtraso) {
+    public void setNfeAtraso(String nfeAtraso) {
         this.nfeAtraso = nfeAtraso;
     }
 
-    public double getAcumuloAtraso() {
+    public String getAcumuloAtraso() {
         return acumuloAtraso;
     }
 
-    public void setAcumuloAtraso(double acumuloAtraso) {
+    public void setAcumuloAtraso(String acumuloAtraso) {
         this.acumuloAtraso = acumuloAtraso;
     }
 

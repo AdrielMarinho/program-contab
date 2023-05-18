@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import Funcionalidades.Connector;
-import Funcionalidades.MetodosSave;
 /**
  *
  * @author Adriel
@@ -302,21 +299,21 @@ public class TelaAddCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
         } else {
             try {
-                cliente.setCpfCnpj((CpfCnpjText.getText().trim()));
-                cliente.setInscricaoMunicipal((InscricaoMunicipalText.getText()));
-                cliente.setRazaoSocial(NameText.getText());
+                cliente.setCpfCnpj(CpfCnpjText.getText().trim());
+                cliente.setInscricaoMunicipal(InscricaoMunicipalText.getText().trim());
+                cliente.setRazaoSocial(NameText.getText().trim());
                 cliente.setEndereco(EnderecoText.getText());
-                cliente.setNumeroEndereco((NumeroText.getText()));
-                cliente.setComplemento(ComplementoText.getText());
-                cliente.setBairro(BairroText.getText());
-                cliente.setUfEndereco(UfText.getText());
-                cliente.setCep((CepText.getText()));
-                cliente.setTelefone((TelefoneText.getText()));
-                cliente.setEmail(EmailText.getText());
-                cliente.setRazaoReduzida(RazaoRedText.getText());
-                cliente.setDataCadastro(DataCadastroText.getText());
-                cliente.setIndicacao(IndicacaoText.getText());
-                cliente.setComissao((ComissaoText.getText()));
+                cliente.setNumeroEndereco(NumeroText.getText().trim());
+                cliente.setComplemento(ComplementoText.getText().trim());
+                cliente.setBairro(BairroText.getText().trim());
+                cliente.setUfEndereco(UfText.getText().trim());
+                cliente.setCep(CepText.getText().trim());
+                cliente.setTelefone((TelefoneText.getText().trim()));
+                cliente.setEmail(EmailText.getText().trim());
+                cliente.setRazaoReduzida(RazaoRedText.getText().trim());
+                cliente.setDataCadastro(DataCadastroText.getText().trim());
+                cliente.setIndicacao(IndicacaoText.getText().trim());
+                cliente.setComissao(ComissaoText.getText().trim());
                 
                 metodoSave.criarRegistroClienteBD(cliente);
                 

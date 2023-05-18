@@ -17,11 +17,13 @@ public class TelaAddNFEs extends javax.swing.JFrame {
     /**
      * Creates new form TelaAddNFEs
      */
+	Nfes nfe = new Nfes();
+	MetodosSave metodoSave = new MetodosSave();
+	
     public TelaAddNFEs() {
         initComponents();
     }
 
-    Nfes nfe = new Nfes();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -373,42 +375,43 @@ public class TelaAddNFEs extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
-        if (validaCamposObrigatorios()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
-        } else {
-            try {
-                nfe.setNumero(Integer.parseInt(NumeroField.getText()));
-                nfe.setCodVerificacao(CodVerificacaoField.getText());
-                nfe.setDataEmissao(Integer.parseInt(DataEmissaoField.getText()));
-                nfe.setCompetencia(CompetenciaField.getText());
-                nfe.setBaseCalculo(Float.parseFloat(BasedeCalculoField.getText()));
-                nfe.setIssRetido(Float.parseFloat(IssRetidoField.getText()));
-                nfe.setValorLiquido(Float.parseFloat(ValorLiquidoLabelField.getText()));
-                nfe.setValorServico(Float.parseFloat(ValordosServicosField.getText()));
-                nfe.setCodigoTributacao(CodTributacaoMunField.getText());
-                nfe.setServico(DiscServicosText.getText());
-                nfe.setCpfCnpjCliente(CpfCnpjField.getText());
-                nfe.setRazaoReduzidaCliente(RazaoRedField.getText());
-                nfe.setBairroCliente(BairroField.getText());
-                nfe.setUfCliente(UFField.getText());
-                nfe.setDataVencimento(Integer.parseInt(VencimentoField.getText()));
-                nfe.setDataPagamento(Integer.parseInt(PagamentoField.getText()));
-                nfe.setJurosPagamento(Float.parseFloat(JurosField.getText()));
-                nfe.setDescontoPagamento(Float.parseFloat(DescontoField.getText()));
-                nfe.setImpostoRetido(Float.parseFloat(ImpostoRetField.getText()));
-                nfe.setValorPago(Float.parseFloat(ValorPagoField.getText()));
-                nfe.setImportadaEm(Integer.parseInt(ImportadaEmField.getText()));
-                nfe.setJurosMultaAbonada(Float.parseFloat(JurosMultaAbonadaField.getText()));
-                nfe.setDataEmissao(Integer.parseInt(MesAnoField.getText()));
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
-            }
-        }
         salvarDados();
     }//GEN-LAST:event_SaveButtonActionPerformed
 
 private void salvarDados() {
-                
+	if (validaCamposObrigatorios()) {
+        JOptionPane.showMessageDialog(null, "Preencha todos os campos para salvar!");
+    } else {
+        try {
+            nfe.setNumero(NumeroField.getText().trim());
+            nfe.setCodVerificacao(CodVerificacaoField.getText().trim());
+            nfe.setDataEmissao(DataEmissaoField.getText().trim());
+            nfe.setCompetencia(CompetenciaField.getText().trim());
+            nfe.setBaseCalculo(BasedeCalculoField.getText().trim());
+            nfe.setIssRetido(IssRetidoField.getText().trim());
+            nfe.setValorLiquido(ValorLiquidoLabelField.getText().trim());
+            nfe.setValorServico(ValordosServicosField.getText().trim());
+            nfe.setCodigoTributacao(CodTributacaoMunField.getText().trim());
+            nfe.setServico(DiscServicosText.getText().trim());
+            nfe.setCpfCnpjCliente(CpfCnpjField.getText().trim());
+            nfe.setRazaoReduzidaCliente(RazaoRedField.getText().trim());
+            nfe.setBairroCliente(BairroField.getText().trim());
+            nfe.setUfCliente(UFField.getText().trim());
+            nfe.setDataVencimento(VencimentoField.getText().trim());
+            nfe.setDataPagamento(PagamentoField.getText().trim());
+            nfe.setJurosPagamento(JurosField.getText().trim());
+            nfe.setDescontoPagamento(DescontoField.getText().trim());
+            nfe.setImpostoRetido(ImpostoRetField.getText().trim());
+            nfe.setValorPago(ValorPagoField.getText().trim());
+            nfe.setImportadaEm(ImportadaEmField.getText().trim());
+            nfe.setJurosMultaAbonada(JurosMultaAbonadaField.getText().trim());
+            nfe.setDataEmissao(MesAnoField.getText().trim());
+            
+            metodoSave.criarRegistroNfeBD(nfe);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
+        }
+    }
     }
     
     private boolean validaCamposObrigatorios(){

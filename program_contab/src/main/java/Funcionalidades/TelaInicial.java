@@ -119,7 +119,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CODIGO VERIFICAÇÃO", "NUMERO", "CPF/CNPJ"
+                "CODIGO VERIFICAÇÃO", "NUMERO"
             }
         ));
         jScrollPane2.setViewportView(tabela1);
@@ -267,13 +267,10 @@ public class TelaInicial extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CPF/CNPJ", "RAZÃO SOCIAL", "INSCRIÇÃO MUNICIPAL", "EMAIL"
+                "CPF/CNPJ", "INSCRIÇÃO MUNICIPAL", "RAZÃO SOCIAL", "EMAIL"
             }
         ));
         jScrollPane1.setViewportView(tabela);
-        if (tabela.getColumnModel().getColumnCount() > 0) {
-            tabela.getColumnModel().getColumn(3).setHeaderValue("EMAIL");
-        }
 
         listar.setText("LISTAR");
         listar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -485,6 +482,16 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void AddButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton1ActionPerformed
         // TODO add your handling code here:
+        MetodosSave metodoListar = new MetodosSave();
+        ArrayList<Nfes> nfe = metodoListar.listarDadosNfe();
+        
+        DefaultTableModel modelo = (DefaultTableModel)tabela1.getModel();
+        modelo.setNumRows(0);
+        
+        for (Nfes n:nfe) {
+        	Object [] dados = {n.getCodVerificacao(), n.getNumero(), n.getCpfCnpjCliente()};
+        	modelo.addRow(dados);
+        }
     }//GEN-LAST:event_AddButton1ActionPerformed
 
     /**
