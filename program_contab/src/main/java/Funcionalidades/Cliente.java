@@ -32,6 +32,10 @@ public class Cliente {
         
     }
     
+    public Cliente(String cpfCnpj ) {
+    	this.cpfCnpj = cpfCnpj;
+    }
+    
     public Cliente(String cpfCnpj, String inscricaoMunicipal, String razaoSocial, String email) {
     	this.cpfCnpj = cpfCnpj;
     	this.inscricaoMunicipal = inscricaoMunicipal;
