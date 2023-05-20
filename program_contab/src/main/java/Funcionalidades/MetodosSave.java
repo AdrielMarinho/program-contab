@@ -77,7 +77,6 @@ public class MetodosSave {
 		Connection con = Connector.conectar();
 		PreparedStatement stmt = null;
 		String sql = "DELETE from nfe where cod_ver= ?";
-		System.out.println("delete");
 		try {
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, codVer);
@@ -154,14 +153,50 @@ public class MetodosSave {
 		return nfe;
 	}
 	
+	public void alterarRegistroCliente(Cliente c) {
+    	Connection con = Connector.conectar();
+
+        try {
+            String sql = "UPDATE cliente SET cpf_cnpj = ?, cep = ?, telefone = ?, "
+            		+ "inscricao_municipal = ?, email = ?, razao_social = ?,"
+            		+ " razao_reduzida = ?, data_de_cadastro = ?,"
+            		+ " num_endereco = ?, indicacao = ?, complemento = ?, bairro = ?,"
+            		+ "end_uf = ?, WHERE cpf_cnpj = ?";
+          
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+        	stmt.setString(1, c.getCpfCnpj());
+			stmt.setString(2, c.getCep());
+			stmt.setString(3, c.getTelefone());
+			stmt.setString(4, c.getInscricaoMunicipal());
+			stmt.setString(5, c.getEmail());
+			stmt.setString(6, c.getRazaoSocial());
+			stmt.setString(7, c.getRazaoReduzida());
+			stmt.setString(8, c.getDataCadastro());
+			stmt.setString(9, c.getNumeroEndereco());
+			stmt.setString(10, c.getIndicacao());
+			stmt.setString(11, c.getComplemento());
+			stmt.setString(12, c.getBairro());
+			stmt.setString(13, c.getUfEndereco());
+
+          //  String rowsAffected = stmt.executeUpdate();
+			stmt.executeUpdate();
+          //  System.out.println(rowsAffected + " registros atualizados com sucesso.");
+			JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso !");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+        	Connector.desconectar(con,null);
+        }
+    }
 	
 	
 	/*
-	public String pesquisaClienteCpfCnpj(String teste){
-		//ArrayList<Cliente> cliente = new ArrayList<Cliente>();
+	public ArrayList<Cliente> pesquisaClienteCpfCnpj(String teste){
 		Connection con = Connector.conectar();
 		PreparedStatement stmt = null;
-		String sql = "SELECT cpf_cnpj from cliente WHERE cpf_cnpj ="+teste;
+		ArrayList<Cliente> cliente = new ArrayList<Cliente>();
+		String sql = "SELECT cpf_cnpj from cliente WHERE cpf_cnpj = ?";
 		try {
 			stmt = con.prepareStatement(sql);
 			ResultSet resposta = stmt.executeQuery(sql);
@@ -169,14 +204,14 @@ public class MetodosSave {
 			while (resposta.next()) {
 				String cpfCnpj = resposta.getString("cpf_cnpj");
 				Cliente c = new Cliente(cpfCnpj);
-				//cliente.add(c);
+				cliente.add(c);
 			}
 		} catch(SQLException e) {
 			JOptionPane.showMessageDialog(null, "Erro ao pesquisar o cliente.");
 		} finally {
 			Connector.desconectar(con, stmt);
 		}
-		return c;
+		return cliente;
 	}
 	*/
 }

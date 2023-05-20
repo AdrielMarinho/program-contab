@@ -3,6 +3,8 @@ package Funcionalidades;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -17,6 +19,8 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
     /**
      * Creates new form TelaAlterarCliente
      */
+	Cliente cliente = new Cliente();
+	MetodosSave metodosSave = new MetodosSave();
     public TelaAlterarCliente() {
         initComponents();
     }
@@ -272,8 +276,35 @@ public class TelaAlterarCliente extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
+    	alterarDados();
     }//GEN-LAST:event_SaveButtonActionPerformed
 
+private void alterarDados() {
+	    try {
+	        cliente.setCpfCnpj(CpfCnpjText.getText().trim());
+	        cliente.setInscricaoMunicipal(InscricaoMunicipalText.getText().trim());
+	        cliente.setRazaoSocial(NameText.getText().trim());
+	        cliente.setEndereco(EnderecoText.getText());
+	        cliente.setNumeroEndereco(NumeroText.getText().trim());
+	        cliente.setComplemento(ComplementoText.getText().trim());
+	        cliente.setBairro(BairroText.getText().trim());
+	        cliente.setUfEndereco(UfText.getText().trim());
+	        cliente.setCep(CepText.getText().trim());
+	        cliente.setTelefone((TelefoneText.getText().trim()));
+	        cliente.setEmail(EmailText.getText().trim());
+	        cliente.setRazaoReduzida(RazaoRedText.getText().trim());
+	        cliente.setDataCadastro(DataCadastroText.getText().trim());
+	        cliente.setIndicacao(IndicacaoText.getText().trim());
+	        cliente.setComissao(ComissaoText.getText().trim());
+	        
+	        metodosSave.alterarRegistroCliente(cliente);
+	        
+	        JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!");
+	  } catch (Exception e) {
+	        JOptionPane.showMessageDialog(null, "Erro ao salvar os dados!");
+	    }	
+}
+    
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         CancelButton.addActionListener(new ActionListener() {
             @Override
